@@ -244,7 +244,7 @@ with tab2:
         Num_Transactions=("Num_Transactions", "mean"),
         Count=("User_ID", "count")
     ).round(2)
-    st.dataframe(cluster_stats, use_container_width=True)
+    st.dataframe(cluster_stats, width="stretch")
 
 # ════════════════════════════════════════════════════════════════
 # TAB 3 – ASSOCIATION RULES
@@ -298,7 +298,7 @@ with tab3:
         st.subheader("All Rules Table")
         st.dataframe(
             rules_df[["antecedents", "consequents", "support", "confidence", "lift"]].round(4),
-            use_container_width=True
+            width="stretch"
         )
 
 # ════════════════════════════════════════════════════════════════
@@ -351,12 +351,12 @@ with tab4:
         st.subheader("Anomalous Spenders by Age Group")
         age_anom = anomalies.groupby("Age")["Purchase"].agg(["mean", "count"]).reset_index()
         age_anom.columns = ["Age Group", "Avg Purchase", "Count"]
-        st.dataframe(age_anom, use_container_width=True)
+        st.dataframe(age_anom, width="stretch")
 
         st.subheader("Sample Anomalous Transactions")
         st.dataframe(anomalies[["User_ID", "Age", "Gender", "Occupation",
                                  "City_Category", "Purchase", "Z_Score"]].head(20),
-                     use_container_width=True)
+                     width="stretch")
 
 # ════════════════════════════════════════════════════════════════
 # TAB 5 – INSIGHTS
