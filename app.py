@@ -184,9 +184,9 @@ def cyber_fig(w=8, h=4):
     ax.yaxis.label.set_color("#6a8a9a")
     ax.title.set_color(NEON_CYAN)
     for spine in ax.spines.values():
-        spine.set_edgecolor("rgba(0,255,231,0.15)")
+        spine.set_edgecolor((0, 1.0, 0.906, 0.15))
         spine.set_linewidth(0.5)
-    ax.grid(True, color="rgba(0,255,231,0.06)", linewidth=0.5, linestyle="--")
+    ax.grid(True, color=(0, 1.0, 0.906, 0.06), linewidth=0.5, linestyle="--")
     return fig, ax
 
 def cyber_bar(labels, values, color=NEON_CYAN, title="", xlabel="", ylabel="", h_bar=False):
@@ -469,7 +469,7 @@ with tab2:
         ax.set_xlabel("PCA DIMENSION 1", color="#6a8a9a", fontsize=8)
         ax.set_ylabel("PCA DIMENSION 2", color="#6a8a9a", fontsize=8)
         ax.set_title("CUSTOMER CLUSTER MAP // PCA SPACE", color=NEON_CYAN, fontfamily="monospace", fontsize=9)
-        ax.legend(facecolor=BG_CARD, edgecolor="rgba(0,255,231,0.2)", labelcolor="#e8f4f8", fontsize=7)
+        ax.legend(facecolor=BG_CARD, edgecolor=(0, 1.0, 0.906, 0.2), labelcolor="#e8f4f8", fontsize=7)
         plt.tight_layout(); st.pyplot(fig); plt.close()
 
         st.markdown('<div style="font-family:Share Tech Mono,monospace;font-size:0.75rem;color:#ff2d78;letter-spacing:0.1em;margin:16px 0 8px;">▸ CLUSTER STATS TABLE</div>', unsafe_allow_html=True)
