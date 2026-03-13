@@ -121,12 +121,9 @@ Upload `train.csv` via the sidebar when the app opens.
 
 | Field | Value |
 |---|---|
-| Student Name | *(Your Full Name)* |
-| Registration Number | *(Your Reg Number)* |
+| Student Name | *(Dhwanan Bhatt)* |
 | CRS | Artificial Intelligence |
-| Course | Data Mining |
-| School | *(Your School Name)* |
-| GitHub Repo | *(Your GitHub URL)* |
+| School | *(Udgam School For Children)* |
 | Live App | [⚡ Launch App](https://idai105-2505556--dhwanan-bhatt-avvvz9hkwksrdi73fa5umb.streamlit.app/) |
 
 ---
