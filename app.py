@@ -465,7 +465,7 @@ with tab3:
 
     @st.cache_data
     def run_apriori(_df, support, lift):
-        basket = _df.groupby("User_ID").apply(
+        basket = _df.groupby("User_ID")[["Product_Category_1","Product_Category_2","Product_Category_3"]].apply(
             lambda x: list(set(
                 ["Cat1_"+str(int(c)) for c in x["Product_Category_1"] if c!=0]+
                 ["Cat2_"+str(int(c)) for c in x["Product_Category_2"] if c!=0]+
