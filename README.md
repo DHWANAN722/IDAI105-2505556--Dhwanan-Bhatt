@@ -3,8 +3,7 @@
 **Data Mining – Year 1 Summative Assessment | CRS: Artificial Intelligence**
 
 
-APP LINK: https://idai105-2505556--dhwanan-bhatt-zhgnhej6sxvysynfud5doz.streamlit.app/
-
+APP LINK: https://idai105-2505556--dhwanan-bhatt-bg3cw83unskef3exnsyw3p.streamlit.app/
 ## 🧠 Project Overview
 
 **BLACK FRIDAY // DATA CORE** is a full-stack data mining and business intelligence system built for InsightMart Analytics. It analyzes over 550,000 Black Friday retail transactions to extract deep, actionable insights about customer shopping behavior. The project covers the complete data science pipeline — from raw data ingestion and preprocessing, through exploratory analysis, unsupervised machine learning, association rule mining, statistical anomaly detection, and finally a fully deployed interactive dashboard on Streamlit Cloud.
@@ -250,7 +249,7 @@ This is plotted as a reference line on the distribution histogram and is less se
 
 ## 🎨 The Dashboard — App Walkthrough
 
-The live app at **[BLACK FRIDAY // DATA CORE](https://idai105-2505556--dhwanan-bhatt-avvvz9hkwksrdi73fa5umb.streamlit.app/)** is built with a full cyberpunk neo-noir aesthetic — deep void-black backgrounds, neon cyan/pink/yellow color palette, Orbitron display font, and Share Tech Mono for all data readouts. Every chart uses a dark background with glowing neon bars.
+The live app is built with a full cyberpunk neo-noir aesthetic — deep void-black backgrounds, neon cyan/pink/yellow color palette, Orbitron display font, and Share Tech Mono for all data readouts. Every chart uses a dark background with glowing neon bars.
 
 ### 📡 EDA SCAN Tab
 Four headline metrics at the top (total transactions, unique customers, unique products, average spend). Below that: age cohort spend chart, gender spend split, top product category frequency, average revenue per category, and a full 10×10 feature correlation heatmap using a custom diverging colormap.
