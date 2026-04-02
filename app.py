@@ -1,8 +1,9 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import os
+os.environ.setdefault("MPLBACKEND", "Agg")
 import matplotlib
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import seaborn as sns
@@ -241,7 +242,7 @@ st.sidebar.markdown("""
 <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:#6a8a9a;
             margin-top:4px; line-height:1.8;">
   ◆ SYSTEM STATUS<br>
-  ├─ ENGINE: SKLEARN v1.8<br>
+  ├─ ENGINE: SKLEARN<br>
   ├─ ALGO: K-MEANS + APRIORI<br>
   ├─ ANOMALY: Z-SCORE / IQR<br>
   └─ VIZ: MATPLOTLIB CORE
@@ -252,8 +253,8 @@ st.sidebar.markdown("""
 #  DATA LOADING
 # ═══════════════════════════════════════════════════════════════
 @st.cache_data
-def load_and_clean(path="BlackFriday.csv"):
-    df = pd.read_csv(path)
+def load_and_clean(file):
+    df = pd.read_csv(file)
     df["Product_Category_2"] = df["Product_Category_2"].fillna(0).astype(int)
     df["Product_Category_3"] = df["Product_Category_3"].fillna(0).astype(int)
     df = df.drop_duplicates().reset_index(drop=True)
