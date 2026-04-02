@@ -236,15 +236,10 @@ st.markdown('<hr style="border:none; height:1px; background: linear-gradient(90d
 st.sidebar.markdown("""
 <div style="font-family:'Orbitron',sans-serif; font-size:0.9rem; color:#00ffe7;
             text-shadow:0 0 10px #00ffe7; letter-spacing:0.1em; margin-bottom:16px;">
-  ◈ DATA UPLINK
+  ◈ SYSTEM CORE
 </div>
-""", unsafe_allow_html=True)
-
-uploaded = st.sidebar.file_uploader("▸ OVERRIDE DATASET [optional]", type="csv")
-
-st.sidebar.markdown("""
 <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:#6a8a9a;
-            margin-top:20px; line-height:1.8;">
+            margin-top:4px; line-height:1.8;">
   ◆ SYSTEM STATUS<br>
   ├─ ENGINE: SKLEARN v1.8<br>
   ├─ ALGO: K-MEANS + APRIORI<br>
@@ -253,14 +248,12 @@ st.sidebar.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-DEFAULT_CSV = "BlackFriday.csv"
-
 # ═══════════════════════════════════════════════════════════════
 #  DATA LOADING
 # ═══════════════════════════════════════════════════════════════
 @st.cache_data
-def load_and_clean(file):
-    df = pd.read_csv(file)
+def load_and_clean(path="BlackFriday.csv"):
+    df = pd.read_csv(path)
     df["Product_Category_2"] = df["Product_Category_2"].fillna(0).astype(int)
     df["Product_Category_3"] = df["Product_Category_3"].fillna(0).astype(int)
     df = df.drop_duplicates().reset_index(drop=True)
@@ -268,20 +261,16 @@ def load_and_clean(file):
     age_map = {"0-17":1,"18-25":2,"26-35":3,"36-45":4,"46-50":5,"51-55":6,"55+":7}
     df["Age_Encoded"] = df["Age"].map(age_map)
     df["City_Encoded"] = df["City_Category"].map({"A":1,"B":2,"C":3})
-    df["Stay_Encoded"] = df["Stay_In_Current_City_Years"].replace("4+",4).astype(int)
+    df["Stay_Encoded"] = df["Stay_In_Current_City_Years"].replace({"4+": 4}).astype(int)
     df["Purchase_Normalized"] = StandardScaler().fit_transform(df[["Purchase"]])
     df["Z_Score"] = np.abs(stats.zscore(df["Purchase"]))
     df["Is_Anomaly"] = df["Z_Score"] > 3
     return df
 
-_source = uploaded if uploaded is not None else DEFAULT_CSV
 try:
-    df = load_and_clean(_source)
-except FileNotFoundError:
-    st.error("⚠ DEFAULT DATASET NOT FOUND — place BlackFriday.csv in the app directory or upload via sidebar.")
-    st.stop()
+    df = load_and_clean("BlackFriday.csv")
 except Exception as e:
-    st.error(f"⚠ DATA CORRUPTION DETECTED: {e}")
+    st.error(f"⚠ DATA LOAD FAULT: {e}")
     st.stop()
 
 st.sidebar.markdown(f"""
