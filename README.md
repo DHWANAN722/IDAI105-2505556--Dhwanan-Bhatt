@@ -3,7 +3,7 @@
 **Data Mining – Year 1 Summative Assessment | CRS: Artificial Intelligence**
 
 
-APP LINK: https://idai105-2505556--dhwanan-bhatt-bg3cw83unskef3exnsyw3p.streamlit.app/
+APP LINK:https://idai105-2505556--dhwanan-bhatt-hjyabktdr9cg6uquxodnuk.streamlit.app/
 ## 🧠 Project Overview
 
 **BLACK FRIDAY // DATA CORE** is a full-stack data mining and business intelligence system built for InsightMart Analytics. It analyzes over 550,000 Black Friday retail transactions to extract deep, actionable insights about customer shopping behavior. The project covers the complete data science pipeline — from raw data ingestion and preprocessing, through exploratory analysis, unsupervised machine learning, association rule mining, statistical anomaly detection, and finally a fully deployed interactive dashboard on Streamlit Cloud.
