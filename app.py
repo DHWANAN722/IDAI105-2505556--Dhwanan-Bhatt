@@ -240,7 +240,7 @@ st.sidebar.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-uploaded = st.sidebar.file_uploader("▸ INJECT DATASET [train.csv]", type="csv")
+uploaded = st.sidebar.file_uploader("▸ OVERRIDE DATASET [optional]", type="csv")
 
 st.sidebar.markdown("""
 <div style="font-family:'Share Tech Mono',monospace; font-size:0.65rem; color:#6a8a9a;
@@ -253,28 +253,7 @@ st.sidebar.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-if uploaded is None:
-    st.markdown("""
-    <div style="text-align:center; padding:60px 20px;
-                border:1px solid rgba(0,255,231,0.15); border-radius:8px;
-                background:rgba(0,255,231,0.02); margin-top:30px;">
-      <div style="font-size:3rem;">💾</div>
-      <div style="font-family:'Orbitron',sans-serif; font-size:1rem; color:#00ffe7;
-                  letter-spacing:0.1em; margin:16px 0 8px;">AWAITING DATA INJECTION</div>
-      <div style="font-family:'Share Tech Mono',monospace; font-size:0.75rem; color:#6a8a9a;">
-        Upload train.csv via the sidebar uplink to initialize neural scan
-      </div>
-      <div style="margin-top:20px;">
-        <a href="https://drive.google.com/drive/folders/13DxtCVj3S_AAYXG5THw2mmr6_VA1N3L9"
-           style="font-family:'Share Tech Mono',monospace; font-size:0.7rem; color:#ff2d78;
-                  text-decoration:none; border:1px solid #ff2d78; padding:8px 16px;
-                  border-radius:2px; letter-spacing:0.1em;">
-          ⬇ DOWNLOAD DATASET
-        </a>
-      </div>
-    </div>
-    """, unsafe_allow_html=True)
-    st.stop()
+DEFAULT_CSV = "BlackFriday.csv"
 
 # ═══════════════════════════════════════════════════════════════
 #  DATA LOADING
@@ -295,8 +274,12 @@ def load_and_clean(file):
     df["Is_Anomaly"] = df["Z_Score"] > 3
     return df
 
+_source = uploaded if uploaded is not None else DEFAULT_CSV
 try:
-    df = load_and_clean(uploaded)
+    df = load_and_clean(_source)
+except FileNotFoundError:
+    st.error("⚠ DEFAULT DATASET NOT FOUND — place BlackFriday.csv in the app directory or upload via sidebar.")
+    st.stop()
 except Exception as e:
     st.error(f"⚠ DATA CORRUPTION DETECTED: {e}")
     st.stop()
